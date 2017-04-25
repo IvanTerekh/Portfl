@@ -2,12 +2,14 @@ package com.terekh.portfl.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.terekh.portfl.entity.User;
+import com.terekh.portfl.model.Gender;
+import com.terekh.portfl.model.User;
+import com.terekh.portfl.model.UserRole;
 import com.terekh.portfl.repository.UserRepository;
 
 
@@ -20,13 +22,19 @@ public class MainController {
 	
 	@GetMapping(path="/add") // Map ONLY GET Requests
 	public @ResponseBody String addNewUser (@RequestParam String name
-			, @RequestParam Integer birthYear) {
+			, @RequestParam int birthYear) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
 		
 		User n = new User();
 		n.setName(name);
 		n.setBirthYear(birthYear);
+		n.setEmail("mail@gmail.com");
+		n.setPassword("sdg");
+		n.setGender(Gender.GENDER_CISGENDER_MALE);
+		n.setRole(UserRole.ROLE_USER);
+		n.setWeight(55);
+		n.setHeight(175);
 		userRepository.save(n);
 		return "Saved";
 	}

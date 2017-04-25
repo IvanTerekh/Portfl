@@ -5,17 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.terekh.portfl.dao.UserDao;
+import com.terekh.portfl.repository.UserRepository;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
-	UserDao userDao;
+	private UserRepository userRepository;
 	
 	@GetMapping("/")
 	public String home(Model model){
-		model.addAttribute("users", userDao.findAll().get(0).getName());
+		model.addAttribute("users", userRepository.findAll().get(0).getName());
 		return "home";
 	}
 
