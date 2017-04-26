@@ -27,7 +27,7 @@ public class MainController {
 		// @RequestParam means it is a parameter from the GET or POST request
 		
 		User n = new User();
-		n.setName(name);
+		n.setUsername(name);
 		n.setBirthYear(birthYear);
 		n.setEmail("mail@gmail.com");
 		n.setPassword("sdg");

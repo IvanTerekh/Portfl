@@ -28,10 +28,10 @@ import lombok.ToString;
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @NotEmpty
-    private String name;
+    private String username;
 
     @NotEmpty
     private String password;
@@ -60,7 +60,7 @@ public class User {
     private Gender gender;
     
     public User(String name, String password, String email) {
-        this.name = name;
+        this.username = name;
         this.password = password;
         this.email = email;
     }

@@ -15,7 +15,7 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String home(Model model){
-		model.addAttribute("users", userRepository.findAll().get(0).getName());
+		model.addAttribute("users", userRepository.findByUsername("lol").getUsername());
 		return "home";
 	}
 
