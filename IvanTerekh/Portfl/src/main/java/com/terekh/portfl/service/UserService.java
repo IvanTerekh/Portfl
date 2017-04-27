@@ -23,6 +23,10 @@ public class UserService {
     public User findOne(Long userId) {
         return this.userRepository.findOne(userId);
     }
+    
+    public User findByUsername(String username) {
+        return this.userRepository.findByUsername(username);
+    }
 
     public List<User> findAll() {
         return this.userRepository.findAll();
