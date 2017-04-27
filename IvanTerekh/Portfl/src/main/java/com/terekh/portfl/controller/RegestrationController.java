@@ -25,7 +25,7 @@ public class RegestrationController {
 		return "registration/step1";
 	}
 	
-	@PostMapping(path="/registration/step1")
+	@PostMapping(path="/registration/step2")
 	public String addUser(@RequestParam String username
 			, @RequestParam String email
 			, @RequestParam String password
@@ -37,10 +37,11 @@ public class RegestrationController {
 		User user = new User(username, password, email);
 		userService.create(user);
 		model.addAttribute("username", username);
+		model.addAttribute("genders", Gender.values());
 		return "registration/step2";
 	}
 	
-	@PostMapping(path="/registration/step2")
+	@PostMapping(path="/registration/step3")
 	public String addUserInfo(@RequestParam Integer birthYear
 			, @RequestParam Integer height
 			, @RequestParam Integer weight

@@ -2,28 +2,64 @@
 <html>
 <head>
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous"></link>
+<style>
+body {
+	background: #f9f9f9;
+}
+
+header {
+	padding-top: 50px;
+	padding-bottom: 25px;
+}
+</style>
 </head>
 <body>
-	<form method="post" th:action="@{/registration/step2(username=${username})}">
-		<div>
-			<label> Year of birth: <input type="number" name="birthYear" />
-			</label>
+	<header>
+		<div class="container">
+			<a style="display: block; text-align: center;"> <img
+				src="http://res.cloudinary.com/dvvtynri4/image/upload/v1493244320/1_Primary_logo_on_transparent_97x97_2_vzsrye.png"
+				style="width: 100px"></img>
+			</a>
 		</div>
-		<div>
-			<label> Height: <input type="number" name="height" />
-			</label>
+	</header>
+	<div class="container">
+		<div class="row">
+			<div style="width: 340px; margin: 0 auto;">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form method="post"
+							th:action="@{/registration/step3(username=${username})}">
+							<div class="form-group">
+								<h4>Year of birth:</h4>
+								<input type="number" name="birthYear" class="form-control" />
+							</div>
+							<div class="form-group">
+								<h4>Height:</h4>
+								<input type="number" name="height" class="form-control" />
+							</div>
+							<div class="form-group">
+								<h4>Weight:</h4>
+								<input type="number" name="weight" class="form-control" />
+							</div>
+							<div class="form-group">
+								<h4>Gender:</h4>
+								<select name="gender" class="form-control">
+									<option th:each="gender : ${genders}" th:text="${gender.label}"></option>
+								</select>
+							</div>
+							<div class="form-group">
+								<input type="submit" value="Sign Up"
+									class="btn btn-primary btn-large form-control" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div>
-			<label> Weight: <input type="number" name="weight" />
-			</label>
-		</div>
-		<div>
-			<label> Gender: <input type="text" name="gender" />
-			</label>
-		</div>
-		<div>
-			<input type="submit" value="Sign Up" />
-		</div>
-	</form>
+	</div>
 </body>
 </html>
