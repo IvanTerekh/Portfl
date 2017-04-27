@@ -22,4 +22,13 @@ public enum Gender {
     public String getLabel() {
         return label;
     }
+    
+    public static Gender genderFromString(String value){
+    	for(Gender gender : Gender.values()){
+    		if (value.equals(gender.label)){
+    			return gender;
+    		}
+    	}
+    	return null;
+    }
 }

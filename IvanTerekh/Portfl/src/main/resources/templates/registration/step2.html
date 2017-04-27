@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="post" th:action="@{/registration/step2(username=${username})}">
+		<div>
+			<label> Year of birth: <input type="number" name="birthYear" />
+			</label>
+		</div>
+		<div>
+			<label> Height: <input type="number" name="height" />
+			</label>
+		</div>
+		<div>
+			<label> Weight: <input type="number" name="weight" />
+			</label>
+		</div>
+		<div>
+			<label> Gender: <input type="text" name="gender" />
+			</label>
+		</div>
+		<div>
+			<input type="submit" value="Sign Up" />
+		</div>
+	</form>
+</body>
+</html>

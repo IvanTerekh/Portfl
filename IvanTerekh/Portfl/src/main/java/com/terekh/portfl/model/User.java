@@ -41,7 +41,7 @@ public class User {
     private String email;
 
     @Min(1900)
-    private int birthYear;
+    private Integer birthYear;
     
     @Min(1)
     @Max(999)
@@ -63,6 +63,11 @@ public class User {
         this.username = name;
         this.password = password;
         this.email = email;
+        this.birthYear = 1900;
+        this.height = 1;
+        this.weight = 1;
+        this.gender = Gender.GENDER_CISGENDER_MALE;
+        this.role = UserRole.ROLE_USER;
     }
     
 }
