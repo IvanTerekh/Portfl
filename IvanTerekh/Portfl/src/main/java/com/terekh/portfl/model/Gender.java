@@ -3,9 +3,9 @@ package com.terekh.portfl.model;
 public enum Gender {
 	GENDER_CISGENDER_MALE("Cisgender Male"),
 	GENDER_CISGENDER_FEMALE("Cisgender Female"),
-	GENDER_TRANSSEXUAL_MALE("Transsexual male"),
+	GENDER_TRANSSEXUAL_MALE("Transsexual born male"),
 	GENDER_TRANSSEXUAL_FEMALE("Transsexual born female"),
-	GENDER_TRANSGENDER_MALE("Transgender born male"),
+	GENDER_TRANSGENDER_MALE("Transgender male"),
 	GENDER_TRANSGENDER_FEMALE("Transgender female"),
 	GENDER_AGENDER_MALE("Agender male"),
 	GENDER_AGENDER_FEMALE("Agender female"),
