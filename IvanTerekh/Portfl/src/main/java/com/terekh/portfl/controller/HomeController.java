@@ -20,19 +20,7 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String home(Model model){
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (Objects.nonNull(authentication)) {
-            Object principal = authentication.getPrincipal();
-
-            if (principal instanceof UserDetails) {
-                model.addAttribute("users", "userDetails");
-        		return "home";
-            }
-            model.addAttribute("users", "[eqgjqvbxnj");
-
-    		return "home";
-        }
+		
 		model.addAttribute("users", "XYN");
 		return "home";
 	}

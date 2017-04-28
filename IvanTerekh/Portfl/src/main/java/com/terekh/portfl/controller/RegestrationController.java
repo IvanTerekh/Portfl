@@ -18,8 +18,6 @@ public class RegestrationController {
 	@Autowired
 	UserService userService;
 	
-	UnregesteredUsers unregesteredUsers = new UnregesteredUsers();
-	
 	@GetMapping(path="/registration/step1")
 	public String register () {
 		return "registration/step1";
