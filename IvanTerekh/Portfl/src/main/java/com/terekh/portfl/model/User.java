@@ -68,7 +68,7 @@ public class User {
     private List<Photo> photoes;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private Set<Rating> ratings;
+    private List<Rating> ratings;
     
     public User(String name, String password, String email) {
         this.username = name;

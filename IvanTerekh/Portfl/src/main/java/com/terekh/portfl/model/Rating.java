@@ -16,7 +16,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "photoes")
+@Table(name = "ratings")
 @Getter
 @Setter
 @ToString

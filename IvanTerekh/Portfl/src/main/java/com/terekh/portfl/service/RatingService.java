@@ -35,7 +35,7 @@ public class RatingService {
 	public void create(Rating rating) {
         final Long currentUserId = SecurityHelper.getUserId();
         final User currentUser = this.userRepository.findOne(currentUserId);
-        rating.setUser(currentUser);
+        //rating.setUser(currentUser);
 		this.ratingRepository.save(rating);
 	}
 

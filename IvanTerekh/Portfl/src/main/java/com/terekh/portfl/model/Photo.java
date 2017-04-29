@@ -1,6 +1,6 @@
 package com.terekh.portfl.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,7 +16,6 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import lombok.Builder.Default;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -42,7 +41,7 @@ public class Photo {
     private User user;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "photo")
-    private Set<Rating> ratings;
+    private List<Rating> ratings;
     
     @NotNull
     private Float meanRating = 0f;
