@@ -32,8 +32,7 @@
 								request.setRequestHeader('Content-Type',
 										'application/jsonurls')
 								request.send(JSON.stringify(urls));
-								alert(JSON.stringify(urls));
-								//window.location.href = "/";
+								window.location.href = "/users/" + [[${user.username}]];
 							}
 						});
 					}, false);

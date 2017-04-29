@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.terekh.portfl.model.User;
 import com.terekh.portfl.model.UserRole;
+import com.terekh.portfl.security.PortflUserDetails;
+import com.terekh.portfl.security.SecurityHelper;
 import com.terekh.portfl.service.UserService;
 
 @Controller
@@ -27,8 +29,8 @@ public class UsersController {
 	}
 
 	private void updateRole(User user) {
-		User authorizedUser = this.userService.findAuthorizedUser();
-		if (authorizedUser != null && user.getId() == authorizedUser.getId()){
+		PortflUserDetails authorizedUserDetails = SecurityHelper.loggedUser();
+		if (authorizedUserDetails != null && user.getId() == authorizedUserDetails.getId()){
 			user.setRole(UserRole.ROLE_ADMIN);
 		}
 	}

@@ -51,7 +51,7 @@ public class RegestrationController {
 		user.setWeight(weight);
 		user.setGender(Gender.genderFromString(gender));
 		this.userService.update(user);
-		return "redirect:/";
+		return "redirect:/login";
 	}
 	
 }

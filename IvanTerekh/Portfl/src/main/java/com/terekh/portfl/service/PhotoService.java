@@ -1,7 +1,6 @@
 package com.terekh.portfl.service;
 
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,26 +44,26 @@ public class PhotoService {
         this.photoRepository.delete(id);
     }
     
-//    @Transactional
-//    public void updateAverageRating(Photo photo){
-//    	Photo entity = this.photoRepository.findOne(photo.getId());
-//    	List<Rating> ratings = entity.getRatings();
-//    	entity.setMeanRating(this.countMeanRating(ratings));
-//    }
-//    
-//    private Float countMeanRating(List<Rating> ratings){
-//    	if (ratings.size() == 0){
-//    		return 0f;
-//    	}
-//    	int sumOfRatings = countSumOfRatings(ratings);
-//    	return ((float) sumOfRatings) / ratings.size();
-//    }
-//    
-//    private int countSumOfRatings(List<Rating> ratings){
-//    	int sumOfRatings = 0;
-//    	for(Rating rating : ratings){
-//    		sumOfRatings += rating.getRating();
-//    	}
-//    	return sumOfRatings;
-//    }
+    @Transactional
+    public void updateAverageRating(Photo photo){
+    	Photo entity = this.photoRepository.findOne(photo.getId());
+    	List<Rating> ratings = entity.getRatings();
+    	entity.setMeanRating(this.countMeanRating(ratings));
+    }
+    
+    private Float countMeanRating(List<Rating> ratings){
+    	if (ratings.size() == 0){
+    		return 0f;
+    	}
+    	int sumOfRatings = countSumOfRatings(ratings);
+    	return ((float) sumOfRatings) / ratings.size();
+    }
+    
+    private int countSumOfRatings(List<Rating> ratings){
+    	int sumOfRatings = 0;
+    	for(Rating rating : ratings){
+    		sumOfRatings += rating.getRating();
+    	}
+    	return sumOfRatings;
+    }
 }
