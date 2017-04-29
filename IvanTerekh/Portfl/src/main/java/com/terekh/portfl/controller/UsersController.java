@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.terekh.portfl.model.User;
+import com.terekh.portfl.model.UserRole;
 import com.terekh.portfl.service.UserService;
 
 @Controller
@@ -20,18 +21,15 @@ public class UsersController {
 	@GetMapping("/{username}")
 	public String showUserPage(@PathVariable String username, Model model){
 		User user = userService.findByUsername(username);
-		if (user == null){
-			return "users/404";
+		updateRole(user);
+		model.addAttribute("user", user);
+		return "/users/user";
+	}
+
+	private void updateRole(User user) {
+		User authorizedUser = this.userService.getAuthorizedUser();
+		if (authorizedUser != null && user.getId() == authorizedUser.getId()){
+			user.setRole(UserRole.ROLE_ADMIN);
 		}
-		model.addAttribute("user", user);
-		return "/users/user";
 	}
-	
-	@GetMapping("/mypage")
-	public String showPersonalPage(Model model){
-		User user = userService.getAuthorizedUser();
-		model.addAttribute("user", user);
-		return "/users/user";
-	}
-	
 }

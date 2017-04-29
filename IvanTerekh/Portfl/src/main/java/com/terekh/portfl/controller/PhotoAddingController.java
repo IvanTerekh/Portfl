@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.terekh.portfl.model.Photo;
 import com.terekh.portfl.model.User;
+import com.terekh.portfl.service.PhotoService;
 import com.terekh.portfl.service.UserService;
 
 @Controller
@@ -20,15 +21,14 @@ public class PhotoAddingController {
 	UserService userService;
 
 	@Autowired
-	UserService photoService;
+	PhotoService photoService;
 
 	@PostMapping(path = "/addphotoes", consumes = "application/jsonurls")
 	public String addPhotoes(@RequestBody String jsonUrls, Model model) {
 		Photo[] photoes = this.initializePhotoes(this.parseJsonUrls(jsonUrls));
-		User user = userService.findOne(1L);
-		user.setHeight(132);
-		user.setUsername(photoes[0].getUrl());
-		this.userService.update(user);
+		for (Photo photo : photoes){
+			this.photoService.create(photo);
+		}
 		return "redirect:/home";
 	}
 	
