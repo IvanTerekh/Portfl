@@ -1,6 +1,7 @@
 package com.terekh.portfl.model;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -27,8 +28,8 @@ import lombok.ToString;
 @Table(name = "users")
 @Getter
 @Setter
-@NoArgsConstructor
 @ToString
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -65,6 +66,9 @@ public class User {
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Photo> photoes;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<Rating> ratings;
     
     public User(String name, String password, String email) {
         this.username = name;

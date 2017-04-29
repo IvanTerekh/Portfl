@@ -27,7 +27,7 @@ public class UsersController {
 	}
 
 	private void updateRole(User user) {
-		User authorizedUser = this.userService.getAuthorizedUser();
+		User authorizedUser = this.userService.findAuthorizedUser();
 		if (authorizedUser != null && user.getId() == authorizedUser.getId()){
 			user.setRole(UserRole.ROLE_ADMIN);
 		}

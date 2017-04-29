@@ -44,18 +44,20 @@ public class UserService {
 	@Transactional
 	public void update(User user) {
 		User entity = this.userRepository.findOne(user.getId());
-
 		if (Objects.nonNull(entity)) {
-			entity.setUsername(user.getUsername());
-			entity.setEmail(user.getEmail());
-			entity.setRole(user.getRole());
-
-			if (Objects.nonNull(user.getPassword())) {
-				entity.setPassword(user.getPassword());
-			}
-
+			updateFields(entity, user);
 			this.userRepository.save(entity);
 		}
+	}
+	
+	private void updateFields(User oldUser, User newUser){
+		oldUser.setUsername(newUser.getUsername());
+		oldUser.setEmail(newUser.getEmail());
+		oldUser.setRole(newUser.getRole());
+		oldUser.setBirthYear(newUser.getBirthYear());
+		oldUser.setHeight(newUser.getHeight());
+		oldUser.setWeight(newUser.getWeight());
+		oldUser.setGender(newUser.getGender());
 	}
 
 	@Transactional
@@ -63,7 +65,7 @@ public class UserService {
 		this.userRepository.delete(id);
 	}
 
-	public User getAuthorizedUser() {
+	public User findAuthorizedUser() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (Objects.nonNull(authentication)) {
 			Object principal = authentication.getPrincipal();
