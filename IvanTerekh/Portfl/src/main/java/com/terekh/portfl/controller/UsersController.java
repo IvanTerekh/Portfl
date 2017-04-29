@@ -27,4 +27,11 @@ public class UsersController {
 		return "/users/user";
 	}
 	
+	@GetMapping("/mypage")
+	public String showPersonalPage(Model model){
+		User user = userService.getAuthorizedUser();
+		model.addAttribute("user", user);
+		return "/users/user";
+	}
+	
 }

@@ -63,12 +63,12 @@ public class UserService {
 		this.userRepository.delete(id);
 	}
 
-	public UserDetails getAuthorizedUserDetails() {
+	public User getAuthorizedUser() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (Objects.nonNull(authentication)) {
 			Object principal = authentication.getPrincipal();
 			if (principal instanceof UserDetails) {
-				return (UserDetails) principal;
+				return this.userRepository.findByUsername(((UserDetails) principal).getUsername());
 			}
 		}
 		return null;
