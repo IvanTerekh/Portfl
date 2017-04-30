@@ -27,7 +27,6 @@ public class PhotoService {
     }
 
     public List<Photo> findAll() {
-        final Long currentUserId = SecurityHelper.getUserId();
         return this.photoRepository.findAll();
     }
 

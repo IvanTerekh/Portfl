@@ -4,10 +4,16 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.terekh.portfl.repository.UserRepository;
+
 public final class SecurityHelper {
 
     public static Long getUserId() {
-        return loggedUser().getId();
+    	try{
+    		return loggedUser().getId();
+    	} catch(ClassCastException exception) {
+    		return -1L;
+    	}
     }
 
     public static PortflUserDetails loggedUser() {

@@ -16,22 +16,17 @@ import com.terekh.portfl.service.UserService;
 
 @Controller
 public class PhotoAddingController {
-
-	@Autowired
-	UserService userService;
 	
 	@Autowired
 	PhotoService photoService;
 
 	@PostMapping(path = "/addphotoes", consumes = "application/jsonurls")
-	public String addPhotoes(@RequestBody String jsonUrls, Model model) {
-		
+	public void addPhotoes(@RequestBody String jsonUrls, Model model) {
 		Photo[] photoes = this.initializePhotoes(this.parseJsonUrls(jsonUrls));
 		for (Photo photo : photoes){
 			this.photoService.create(photo);
 		}
-		return "redirect:/home";
-		
+//		return "redirect:/home";
 	}
 	
 	private List<Object> parseJsonUrls(String jsonUrls){

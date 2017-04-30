@@ -28,9 +28,8 @@
 									urls.push(result[key]["url"]);
 								}
 								var request = new XMLHttpRequest();
-								request.open("POST", "/addphotoes", true);
-								request.setRequestHeader('Content-Type',
-										'application/jsonurls')
+								request.open("POST", "/addphotoes", false);
+								request.setRequestHeader('Content-Type', 'application/jsonurls');
 								request.send(JSON.stringify(urls));
 								window.location.href = "/users/" + [[${user.username}]];
 							}
@@ -40,7 +39,7 @@
 	</div>
 
 	<div th:each="photo : ${user.photoes}">
-		<img th:src="${photo.url}" />
+		<img th:src="${photo.url}" height="100"/>
 	</div>
 
 </body>

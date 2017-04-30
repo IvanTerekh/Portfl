@@ -29,8 +29,7 @@ public class UsersController {
 	}
 
 	private void updateRole(User user) {
-		PortflUserDetails authorizedUserDetails = SecurityHelper.loggedUser();
-		if (authorizedUserDetails != null && user.getId() == authorizedUserDetails.getId()){
+		if (user.getId() == SecurityHelper.getUserId()){
 			user.setRole(UserRole.ROLE_ADMIN);
 		}
 	}
