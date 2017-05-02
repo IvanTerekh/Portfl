@@ -12,6 +12,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(org.springframework.web.servlet.config.annotation.ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/logout").setViewName("redirect:/home");
         registry.addViewController("/registration").setViewName("redirect:/registration/step1");
     }
 }

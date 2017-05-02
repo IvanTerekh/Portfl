@@ -19,10 +19,18 @@
 		<nav class="white" role="navigation">
 			<div class="nav-wrapper container">
 				<a id="logo-container" href="#" class="brand-logo"><img src="http://res.cloudinary.com/portfl/image/upload/v1493666937/1_Primary_logo_on_transparent_224x64_xd1hmx.png"/></a>
-				<ul class="right hide-on-med-and-down">
-					<li><a href="/registration">Sign up</a></li>
-					<li><a href="/login">Sign in</a></li>
-				</ul>
+				<div th:unless="${authorized}">
+					<ul class="right hide-on-med-and-down">
+						<li><a href="/registration">Sign up</a></li>
+						<li><a href="/login">Sign in</a></li>
+					</ul>
+				</div>
+				<div th:if="${authorized}">
+					<ul class="right hide-on-med-and-down">
+						<li><a href="/mypage">My page</a></li>
+						<li><a href="/logout">Log out</a></li>
+					</ul>
+				</div>
 				<ul id="nav-mobile" class="side-nav">
 					<li><a href="/registraion">Sign up</a></li>
 					<li><a href="/login">Sign in</a></li>

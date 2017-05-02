@@ -31,7 +31,7 @@ public class RegestrationController {
 			, @RequestParam String passwordRepeat
 			, Model model) {
 		if (!password.equals(passwordRepeat)){
-			return "sasai";
+			return "redirect:/registration/step1";
 		}
 		User user = new User(username, fullName,  password, email);
 		userService.create(user);

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.terekh.portfl.model.User;
+import com.terekh.portfl.model.UserRole;
 import com.terekh.portfl.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -38,6 +39,9 @@ public class UserService {
 	@Transactional
 	public void create(User user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		if (this.userRepository.findAll().isEmpty()){
+			user.setRole(UserRole.ROLE_ADMIN);
+		}
 		this.userRepository.save(user);
 	}
 
