@@ -33,7 +33,7 @@ public class RegestrationController {
 		if (!password.equals(passwordRepeat)){
 			return "sasai";
 		}
-		User user = new User(username, password, email);
+		User user = new User(username, fullName,  password, email);
 		userService.create(user);
 		model.addAttribute("username", username);
 		model.addAttribute("genders", Gender.values());
@@ -51,6 +51,7 @@ public class RegestrationController {
 		user.setHeight(height);
 		user.setWeight(weight);
 		user.setGender(Gender.genderFromString(gender));
+		user.setValid(true);
 		this.userService.update(user);
 		return "redirect:/login";
 	}

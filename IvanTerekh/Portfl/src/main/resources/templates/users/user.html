@@ -18,44 +18,79 @@
 			<div class="col s4">
 				<div class="card">
 					<div class="card-image">
-						<img src="image" />
+						<img th:src="${user.avatarUrl}" />
+						<div th:if="${user.role.label == 'Admin'}">
+							<a id="avatar"
+								class="btn-floating halfway-fab waves-effect waves-light red">
+								<i class="material-icons">mode_edit</i>
+							</a>
+							<script src="//widget.cloudinary.com/global/all.js"
+								type="text/javascript"></script>
+							<script type="text/javascript" th:inline="javascript">
+								document.getElementById("avatar").addEventListener(
+										"click",
+										function() {
+											cloudinary.openUploadWidget({
+												cloud_name : 'portfl',
+												upload_preset : 'ecamo2yf'
+											}, function(error, result) {
+												if (result != undefined) {
+													var urls = [];
+													for ( var key in result) {
+														urls.push(result[key]["url"]);
+													}
+													var request = new XMLHttpRequest();
+													request.open("POST", "/addavatar/" + [[${user.username}]], false);
+													request.setRequestHeader('Content-Type', 'application/jsonurls');
+													request.send(JSON.stringify(urls));
+													window.location.href = "/users/" + [[${user.username}]];
+												}
+											});
+										}, false);
+							</script>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col s8">
 				<div class="card">
 					<div class="card-content">
-						<span class="card-title">Full name</span> <span
-							class="card-subtitle">Full name</span>
+						<span th:text="${user.fullName}" class="card-title">Full
+							name</span> <span th:text="${user.username}" class="teal-text lighten-1">Username</span>
 						<div class="row">
-							<div class="col s10 offset-s1">
+							<div class="col s8 offset-s1">
 								<table>
 									<tbody>
 										<tr>
 											<td>Year of birth</td>
-											<td th:text="${user.birthYear}">1800</td>
+											<td th:text="${user.birthYear}" />
 										</tr>
 										<tr>
 											<td>Height</td>
-											<td>123</td>
+											<td th:text="${user.height}" />
 										</tr>
 										<tr>
 											<td>Weight</td>
-											<td>76</td>
+											<td th:text="${user.weight}" />
+										</tr>
+										<tr>
+											<td>Gender</td>
+											<td th:text="${user.gender.label}" />
 										</tr>
 									</tbody>
 								</table>
 							</div>
 						</div>
 					</div>
-					<div class="card-action">
-						<a href="#">This is a link</a> <a href="#">This is a link</a>
-					</div>
 				</div>
 			</div>
 		</div>
 		<div th:if="${user.role.label == 'Admin'}">
-			<a href="#" id="upload_widget_opener" class="btn">Add photoes</a>
+			<div class="row">
+				<div class="col offset-s9">
+				<a href="#" id="upload_widget_opener" class="btn">Add photoes</a>
+				</div>
+			</div>
 			<script src="//widget.cloudinary.com/global/all.js"
 				type="text/javascript"></script>
 			<script type="text/javascript" th:inline="javascript">
@@ -82,17 +117,59 @@
 		</script>
 		</div>
 
+		<div class="row">
+			<div class="col s12">
+				<ul class="tabs tabs-transparent teal">
+					<li class="tab col s4"><a class="active" href="#slide-show"><i
+							class="small material-icons teal-text text-lighten-5">view_week</i></a></li>
+					<li class="tab col s4"><a href="#table"><i
+							class="small material-icons teal-text text-lighten-5">view_module</i></a></li>
+					<li class="tab col s4"><a href="#tile"><i
+							class="small material-icons teal-text text-lighten-5">view_stream</i></a></li>
+				</ul>
+			</div>
 
-		<div th:each="photo : ${user.photoes}">
-			<img th:src="${photo.url}" height="100" />
+			<div id="slide-show" class="col s12">
+				<div class="carousel">
+					<div th:each="photo : ${user.photoes}">
+						<a class="carousel-item" href="#next!"> <img
+							th:src="${photo.url}" />
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<div id="table" class="col s12">
+					<div class="row">
+						<div th:each="photo : ${user.photoes}" class="col s4">
+							<div class="card"
+								th:style="'background: url(' + @{${photo.url}} + '), no-repeat center; background-size: cover; height: 270px'">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="tile" class="col s12">
+					<div th:each="photo : ${user.photoes}">
+						<div class="card">
+							<div class="card-image">
+								<img th:src="${photo.url}" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-
 	</div>
 
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="http://materializecss.com/dist/js/materialize.js"></script>
 	<script
 		src="http://materializecss.com/templates/parallax-template/js/init.js"></script>
+	<script>$(document).ready(function(){
+      $('.carousel').carousel();
+    });
+	</script>
 
 </body>
 </html>

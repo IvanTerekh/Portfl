@@ -37,6 +37,9 @@ public class User {
 
     @NotEmpty
     private String username;
+    
+    @NotEmpty
+    private String fullName;
 
     @NotEmpty
     private String password;
@@ -70,8 +73,14 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Rating> ratings;
     
-    public User(String name, String password, String email) {
-        this.username = name;
+    private Boolean valid;
+    
+    @NotEmpty
+    private String avatarUrl;
+    
+    public User(String username, String fullName,  String password, String email) {
+        this.username = username;
+        this.fullName = fullName;
         this.password = password;
         this.email = email;
         this.birthYear = 1900;
@@ -79,6 +88,8 @@ public class User {
         this.weight = 1;
         this.gender = Gender.GENDER_CISGENDER_MALE;
         this.role = UserRole.ROLE_USER;
+        this.valid = false;
+        this.avatarUrl = "http://res.cloudinary.com/portfl/image/upload/v1493725399/default-avatar_hazmoa.png";
     }
     
 }

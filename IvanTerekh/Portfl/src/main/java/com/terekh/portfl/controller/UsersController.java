@@ -23,14 +23,15 @@ public class UsersController {
 	@GetMapping("/{username}")
 	public String showUserPage(@PathVariable String username, Model model){
 		User user = userService.findByUsername(username);
+		if (user == null)
+			return "404";
 		updateRole(user);
 		model.addAttribute("user", user);
 		return "/users/user";
 	}
 
 	private void updateRole(User user) {
-		if (8
-				== SecurityHelper.getUserId()){
+		if (user.getId() == SecurityHelper.getUserId()){
 			user.setRole(UserRole.ROLE_ADMIN);
 		}
 	}
