@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Portfl</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+<title>Parallax Template - Materialize</title>
+
+<!-- CSS  -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<link href="http://materializecss.com/dist/css/materialize.min.css"
+	type="text/css" rel="stylesheet" media="screen,projection" />
+<link
+	href="http://materializecss.com/templates/parallax-template/css/style.css"
+	type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
 <body>
-	Portfl
-	<h1></h1>
-	<hr />
+
+	<div th:replace="fragments/header :: header" />
+
+	<!--  Scripts-->
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="http://materializecss.com/dist/js/materialize.js"></script>
+	<script
+		src="http://materializecss.com/templates/parallax-template/js/init.js"></script>
 </body>
 </html>

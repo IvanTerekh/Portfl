@@ -24,7 +24,8 @@ public class RegestrationController {
 	}
 	
 	@PostMapping(path="/registration/step2")
-	public String addUser(@RequestParam String username
+	public String addUser(@RequestParam String fullName
+			, @RequestParam String username
 			, @RequestParam String email
 			, @RequestParam String password
 			, @RequestParam String passwordRepeat

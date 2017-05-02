@@ -29,7 +29,8 @@ public class UsersController {
 	}
 
 	private void updateRole(User user) {
-		if (user.getId() == SecurityHelper.getUserId()){
+		if (8
+				== SecurityHelper.getUserId()){
 			user.setRole(UserRole.ROLE_ADMIN);
 		}
 	}
