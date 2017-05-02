@@ -8,6 +8,4 @@ import com.terekh.portfl.model.Photo;
 
 @Repository
 public interface PhotoRepository extends JpaRepository<Photo, Long>  {
-
-//    Photo findByUrl(@Param("url") String url);
 }

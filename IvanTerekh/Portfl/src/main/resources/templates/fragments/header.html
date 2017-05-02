@@ -31,10 +31,18 @@
 						<li><a href="/logout">Log out</a></li>
 					</ul>
 				</div>
-				<ul id="nav-mobile" class="side-nav">
-					<li><a href="/registraion">Sign up</a></li>
-					<li><a href="/login">Sign in</a></li>
-				</ul>
+				<div th:unless="${authorized}">
+					<ul id="nav-mobile" class="side-nav">
+						<li><a href="/registraion">Sign up</a></li>
+						<li><a href="/login">Sign in</a></li>
+					</ul>
+				</div>
+				<div th:if="${authorized}">
+					<ul id="nav-mobile" class="side-nav">
+						<li><a href="/mypage">My page</a></li>
+						<li><a href="/logout">Log out</a></li>
+					</ul>
+				</div>
 				<a href="#" data-activates="nav-mobile" class="button-collapse"><i
 					class="material-icons">menu</i></a>
 			</div>

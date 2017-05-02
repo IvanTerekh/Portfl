@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.terekh.portfl.model.User;
 import com.terekh.portfl.model.UserRole;
@@ -21,7 +20,7 @@ public class UsersController {
 	@GetMapping("/users/{username}")
 	public String showUserPage(@PathVariable String username, Model model){
 		User user = userService.findByUsername(username);
-		if (user == null)
+		if (user == null || !user.getValid())
 			return "404";
 		this.setAuthorized(model);
 		updateRole(user);

@@ -21,7 +21,6 @@ public class RatingService {
 
 	private final UserRepository userRepository;
 	private final RatingRepository ratingRepository;
-	private final PhotoService photoService;
 
 	public Rating findOne(Long ratingId) {
         return this.ratingRepository.findOne(ratingId);

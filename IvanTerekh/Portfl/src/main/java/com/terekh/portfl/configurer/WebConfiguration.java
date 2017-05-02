@@ -2,7 +2,6 @@ package com.terekh.portfl.configurer;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
@@ -12,7 +11,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(org.springframework.web.servlet.config.annotation.ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
-        registry.addViewController("/login?logout").setViewName("redirect:/home");
+        registry.addViewController("/404").setViewName("404");
         registry.addViewController("/registration").setViewName("redirect:/registration/step1");
     }
 }

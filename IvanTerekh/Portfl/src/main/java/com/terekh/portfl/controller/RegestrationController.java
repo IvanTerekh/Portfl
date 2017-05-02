@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.terekh.portfl.model.Gender;
 import com.terekh.portfl.model.User;
-import com.terekh.portfl.model.UserRole;
 import com.terekh.portfl.service.UserService;
 
 @Controller

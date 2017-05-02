@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.terekh.portfl.model.Photo;
 import com.terekh.portfl.model.User;
-import com.terekh.portfl.security.SecurityHelper;
 import com.terekh.portfl.service.PhotoService;
 import com.terekh.portfl.service.UserService;
 
