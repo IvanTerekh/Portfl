@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-<title>Parallax Template - Materialize</title>
+<title>Portfl</title>
 
 <!-- CSS  -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -20,20 +20,21 @@
 	<div th:replace="fragments/header :: header" />
 	<div class="container">
 		<div class="row" th:each="photo : ${photoes}">
-			<div class="col s12 m8 offset-m2" >
+			<div class="col s12 m8 offset-m2">
 				<div class="card">
 					<div class="card-image">
 						<img th:src="${photo.url}" />
 					</div>
 					<div class="">
 						<ul class="collection" style="margin: 0px;">
-    						<li class="collection-item avatar"><img th:src="${photo.user.avatarUrl}" alt="" class="circle"/>
-    							<span class="card-title" style="margin: 8px;" th:text="${photo.user.fullName}">Full
-							Name</span>
-    						</li>
-    					</ul>
+							<li class="collection-item avatar"><img
+								th:src="${photo.user.avatarUrl}" alt="" class="circle" />
+								<div style="margin: 8px;">
+									<a class="card-title teal-text text-darken-4" th:href="@{'/users/' + ${photo.user.username}}"><span  th:text="${photo.user.fullName}">Full Name</span></a>
+								</div></li>
+						</ul>
 						<!--<div class="avatar"><img th:src="${photo.user.avatarUrl}" alt="" class="circle"/></div>-->
-						
+
 					</div>
 				</div>
 			</div>

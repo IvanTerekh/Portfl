@@ -33,6 +33,9 @@ public class RegestrationController {
 		if (!password.equals(passwordRepeat)){
 			return "redirect:/registration/step1";
 		}
+		if (this.userService.findByUsername(username) != null){
+			return "redirect:/registration/step1";
+		}
 		User user = new User(username, fullName,  password, email);
 		userService.create(user);
 		model.addAttribute("username", username);
